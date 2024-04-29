@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sucursal Virtual Personas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('bkm4.jpg'); /* Cambia la ruta a relativa */
+            background-size:  800px 1400px;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 500px;
+            -webkit-user-select: text;  /* Chrome, Safari, Opera */
+            -moz-user-select: text;     /* Firefox */
+            -ms-user-select: text;      /* IE 10+ */
+            user-select: text;          /* Standard syntax */
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 1em;
+        }
+        .logo {
+            width: 400px;
+            height: auto;
+        }
+        .user-info {
+            text-align: right;
+        }
+        .date-time {
+            margin-left: 1em;
+        }
+        .status-banner {
+            background-color: black;
+            color: white;
+            padding: 0.5em;
+            text-align: center;
+        }
+        .main-content {
+            display: flex;
+        }
+        .left-section, .right-section {
+            flex: 1;
+            padding: 1em;
+        }
+        .center-section {
+            flex: 2;
+            padding: 1em;
+        }
+        .user-info {
+            background-color: #F2F3F4;
+            color: #515A5A;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .message-box {
+            background-color: #ccc;
+            padding: 1em;
+        }
+        .quick-access {
+            background-color: #ccc;
+            padding: 1em;
+        }
+
+        /* Estilo para enlaces */
+        .message-box a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        /* Estilo para enlaces al pasar el ratón */
+        .message-box a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="bkm1.jpg" alt="Logo" class="logo">
+    <div class="user-info">
+        <strong>BIENVENIDO A LA SUCURSAL VIRTUAL</strong>
+        <p><br></p>
+        <p>NUMERO DE PRODUCTO:</p>
+        <strong>4767645123</strong>
+    </div>
+    <div class="date-time" id="date-time">
+        <p>Fecha: <span id="current-date"></span></p>
+        <p>Hora: <span id="current-time"></span></p>
+        <p>Tiempo conectado: <span id="time-counter">0 segundos</span></p>
+    </div>
+</header>
+
+<div class="status-banner">
+    <strong>Estado de Cuenta Bancaria</strong>
+</div>
+
+<div class="main-content">
+    <div class="left-section">
+        <div class="status-banner">Saldos por Producto</div>
+        <div class="message-box">
+            <li><strong>cuenta fiduciaria</strong></li>
+        </div>
+        <div class="status-banner">Consulta de Pagos</div>
+        <div class="message-box">
+            <a href="ruta-a-otra-pagina2.html">&ndash;&nbsp;Pago Tarjetas de Crédito</a><br>
+            <a href="ruta-a-otra-pagina3.html">&ndash;&nbsp;Créditos</a>
+        </div>
+    </div>
+    <div class="center-section">
+        <div class="status-banner">Mis Mensajes</div>
+        <div class="message-box">
+            <ul>
+                <li><strong>Mensaje 1</strong></li>
+                <p>se registra un abono a su cuenta fiduciaria finalizada en 43567 por un valor de 15.678'000.000.00<br></p>
+                <li><strong>Mensaje 2</strong></li>
+                <p><br></p>
+                <li><strong>Mensaje 3</strong></li>
+            </ul>
+        </div>
+    </div>
+    <div class="right-section">
+        <div class="status-banner">Accesos Rápidos</div>
+        <div class="message-box">
+            <ul>
+                <a href="ruta-a-otra-pagina2.html">&ndash;&nbsp;Transferencias a otros productos Bancolombia</a><br>
+                <a href="ruta-a-otra-pagina2.html">&ndash;&nbsp;Consultar y pagar servicios públicos Medellín</a><br>
+                <a href="ruta-a-otra-pagina2.html">&ndash;&nbsp;Bolsillos</a><br>
+                <a href="ruta-a-otra-pagina2.html">&ndash;&nbsp;Realizar avances</a><br>
+                <a href="ruta-a-otra-pagina2.html">&ndash;&nbsp;Cambiar cuotas</a><br>
+                <a href="ruta-a-otra-pagina2.html">&ndash;&nbsp;Inversión actual</a><br>
+            </ul>
+        </div>
+    </div>
+        <div class="user-info">
+        <p><strong>Nombre:</strong> <span id="name"></span></p>
+        <p><strong>Número de Cuenta:</strong> <span id="accountNumber"></span></p>
+    </div>
+
+</div>
+
+<script>
+    // Obtener elementos de fecha y hora
+    const currentDateElem = document.getElementById('current-date');
+    const currentTimeElem = document.getElementById('current-time');
+    const timeCounterElem = document.getElementById('time-counter');
+
+    // Actualizar fecha y hora
+    function updateDateTime() {
+        const currentDate = new Date();
+        const hours = String(currentDate.getHours()).padStart(2, '0');
+        const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+        const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+        const dateStr = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
+        currentDateElem.textContent = dateStr;
+        currentTimeElem.textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    // Contador de tiempo conectado
+    let timeCounter = 0;
+    setInterval(() => {
+        timeCounter++;
+        timeCounterElem.textContent = `${timeCounter} segundos`;
+    }, 1000);
+
+    // Actualizar fecha y hora cada segundo
+    setInterval(updateDateTime, 1000);
+
+    // Actualizar fecha y hora al cargar la página
+    updateDateTime();
+    
+     // Obtener el usuario actual del almacenamiento local
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+    // Mostrar los datos del usuario en la página
+    if (currentUser) {
+        document.getElementById("name").textContent = currentUser.name;
+        document.getElementById("accountNumber").textContent = currentUser.accountNumber;
+    }
+     
+</script>
+
+</body>
+</html>
