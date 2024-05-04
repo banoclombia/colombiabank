@@ -115,14 +115,14 @@
     </div>
     <div class="center-section">
         <div class="status-banner">Mis Mensajes</div>
-        <div class="message-box">
+        <div class="message-box-mis-mensajes">
             <ul>
                 <li><strong>Mensaje 1</strong></li>
-                <p>se registra un abono a su cuenta fiduciaria finalizada en 6567 por un valor de 10'400.000.00<br></p>
+                <p><span id="mensaje1"></span></p>
                 <li><strong>Mensaje 2</strong></li>
-                <p>estado de cuenta retenido<br></p>
+                <p><span id="mensaje2"></span><br></p>
                 <li><strong>Mensaje 3</strong></li>
-                <p>pago pendiente impuesto gobierno 4x1000<br></p>
+                <p><span id="mensaje3"></span><br></p>
             </ul>
         </div>
     </div>
@@ -184,6 +184,11 @@
     if (currentUser) {
         document.getElementById("name").textContent = currentUser.name;
         document.getElementById("accountNumber").textContent = currentUser.accountNumber;
+        
+    if (currentUser) {
+        document.getElementById("mensaje1").textContent = currentUser.mensaje1;
+        document.getElementById("mensaje2").textContent = currentUser.mensaje2;
+        document.getElementById("mensaje3").textContent = currentUser.mensaje3;    
     }
      
 </script>
